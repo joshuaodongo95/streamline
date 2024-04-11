@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('results', function (Blueprint $table) {
+        Schema::create('drugs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('test_id');
-            $table->foreignId('user_id');
-            $table->string('result');
-            $table->boolean('authenticated');
+            $table->string('name');
+            $table->string('brand');
+            $table->string('form');
+            $table->string('code')->unique();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results');
+        Schema::dropIfExists('drugs');
     }
 };

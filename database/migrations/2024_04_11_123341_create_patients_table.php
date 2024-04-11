@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
+            $table->string('file_number')->unique();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('gender');
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->string('next_of_kin');
             $table->string('next_of_kin_phone');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

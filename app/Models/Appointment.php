@@ -8,30 +8,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-class Test extends Model
+
+class Appointment extends Model
 {
     use HasFactory, SoftDeletes;
-    use LogsActivity;
 
     protected $fillable = [
         'name',
-        'duration',
+        'date',
         'patient_id',
-        'user_id'
+        'clinical_notes',
+        'clinic_id',
+        'status',
+        'user_id',
     ];
+
     public function patient(): BelongsTo
     {
         return $this->belongsTo(Patient::class);
     }
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function result(): HasOne
-    {
-        return $this->hasOne(Result::class);
-    }
-
+    
 }

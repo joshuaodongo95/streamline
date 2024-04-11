@@ -16,13 +16,16 @@ return new class extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->id();
             $table->foreignId('patient_id');
-            $table->foreignId('user_id');
+            $table->string('symptoms')->nullable();
             $table->foreignId('test_id');
             $table->foreignId('result_id');
             $table->foreignId('diagnosis_id');
-            $table->string('treatment')->nullable();
+            $table->foreignId('treatment_id')->nullable();
+            $table->foreignId('appointment_id')->nullable();
             $table->string('outcome')->nullable;
+            $table->foreignId('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

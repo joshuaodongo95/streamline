@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('results', function (Blueprint $table) {
+        Schema::create('prescriptions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('test_id');
+            $table->foreignId('drug_id');
+            $table->foreignId('number_of_drugs');
+            $table->string('medication');
+            $table->string('instructions');
+            $table->boolean('issued');
             $table->foreignId('user_id');
-            $table->string('result');
-            $table->boolean('authenticated');
+            $table->foreignId('patient_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results');
+        Schema::dropIfExists('prescriptions');
     }
 };

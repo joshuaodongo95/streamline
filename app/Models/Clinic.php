@@ -11,9 +11,12 @@ use Spatie\Activitylog\LogOptions;
 class Clinic extends Model
 {
     use HasFactory, SoftDeletes;
+    use LogsActivity;
+
     protected $fillable = [
         'name',
         'address',
         'phone_number'
     ];
+
 }

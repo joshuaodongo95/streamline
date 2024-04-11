@@ -13,6 +13,12 @@ class Treatment extends Model
     use HasFactory, SoftDeletes;
     use LogsActivity;
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['name', 'date']);
+    }
+
     public function patient(): BelongsTo
     {
         return $this->belongsTo(Patient::class);

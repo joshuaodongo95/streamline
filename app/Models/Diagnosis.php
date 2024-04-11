@@ -11,6 +11,7 @@ use Spatie\Activitylog\LogOptions;
 class Diagnosis extends Model
 {
     use HasFactory, SoftDeletes;
+    use LogsActivity;
 
     protected $fillable = [
         'name',

@@ -13,6 +13,12 @@ class Prescription extends Model
     use HasFactory, SoftDeletes;
     use LogsActivity;
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['drug_id', 'number_of_drugs','medication']);
+    }
+
     protected $fillable = [
         'drug_id',
         'number_of_drugs',

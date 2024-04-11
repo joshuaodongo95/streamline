@@ -22,12 +22,14 @@ class PermissionsSeeder extends Seeder
        app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
        // create permissions
+       Permission::create(['name' => 'view record']);
        Permission::create(['name' => 'edit record']);
        Permission::create(['name' => 'delete record']);
        Permission::create(['name' => 'create record']);
 
        // create roles and assign existing permissions
        $role1 = Role::create(['name' => 'nurse']);
+
        $role1->givePermissionTo('create record');
        $role1->givePermissionTo('edit record');
        $role1->givePermissionTo('delete record');
@@ -47,32 +49,32 @@ class PermissionsSeeder extends Seeder
        // gets all permissions via Gate::before rule; see AuthServiceProvider
 
        // create demo users
-       $user = \App\Models\User::factory()->create([
+       $user1 = \App\Models\User::factory()->create([
            'name' => 'nurse',
            'email' => 'nurse@emr.com',
            'password'=> bcrypt('nurse'),
        ]);
-       $user->assignRole($role1);
+       $user1->assignRole($role1);
 
-       $user = \App\Models\User::factory()->create([
+       $user2 = \App\Models\User::factory()->create([
         'name' => 'doctor',
         'email' => 'doctor@emr.com',
         'password'=> bcrypt('doctor'),
        ]);
-      $user->assignRole($role2);
+      $user2->assignRole($role2);
 
-       $user = \App\Models\User::factory()->create([
+       $user3 = \App\Models\User::factory()->create([
            'name' => 'Admin User',
            'email' => 'admin@emr.com',
            'password'=> bcrypt('admin'),
        ]);
-       $user->assignRole($role2);
+       $user3->assignRole($role2);
 
-       $user = \App\Models\User::factory()->create([
+       $user4 = \App\Models\User::factory()->create([
            'name' => 'Super-Admin User',
            'email' => 'superadmin@emr.com',
            'password'=> bcrypt('superadmin'),
        ]);
-       $user->assignRole($role3);
+       $user4->assignRole($role3);
     }
 }

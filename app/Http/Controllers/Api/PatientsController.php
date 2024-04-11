@@ -18,7 +18,7 @@ class PatientsController extends Controller
     {
         $patients = Patient::all();
 
-        return PatientResource::collection($patient);
+        return PatientResource::collection($patients);
     }
 
     /**

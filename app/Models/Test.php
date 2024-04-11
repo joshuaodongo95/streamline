@@ -13,6 +13,12 @@ class Test extends Model
     use HasFactory, SoftDeletes;
     use LogsActivity;
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['name', 'duration','patient_id']);
+    }
+
     protected $fillable = [
         'name',
         'duration',

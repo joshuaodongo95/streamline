@@ -13,6 +13,12 @@ class Result extends Model
     use HasFactory, SoftDeletes;
     use LogsActivity;
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['test_id', 'user_id']);
+    }
+
     protected $fillable = [
         'test_id',
         'user_id',

@@ -17,6 +17,12 @@ class User extends Authenticatable
     use HasRoles, HasApiTokens, HasFactory, Notifiable, SoftDeletes;
     use LogsActivity;
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['name', 'email','password']);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

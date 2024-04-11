@@ -12,6 +12,7 @@ use Spatie\Activitylog\LogOptions;
 class Appointment extends Model
 {
     use HasFactory, SoftDeletes;
+    use LogsActivity;
 
     protected $fillable = [
         'name',
@@ -26,6 +27,12 @@ class Appointment extends Model
     public function patient(): BelongsTo
     {
         return $this->belongsTo(Patient::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['name', 'date']);
     }
 
     

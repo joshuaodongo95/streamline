@@ -13,6 +13,11 @@ class Record extends Model
     use HasFactory, SoftDeletes;
     use LogsActivity;
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['patient_id', 'symptoms']);
+    }
     protected $fillable = [
         'patient_id',
         'symptoms',

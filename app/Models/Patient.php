@@ -12,6 +12,12 @@ class Patient extends Model
 {
     use HasFactory, SoftDeletes;
     use LogsActivity;
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['file_number','first_name', 'last_name']);
+    }
    
     protected $fillable = [
         'file_number',

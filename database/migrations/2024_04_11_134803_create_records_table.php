@@ -20,9 +20,9 @@ return new class extends Migration
             $table->foreignId('test_id');
             $table->foreignId('result_id');
             $table->foreignId('diagnosis_id');
-            $table->foreignId('treatment_id')->nullable();
-            $table->foreignId('appointment_id')->nullable();
-            $table->string('outcome')->nullable;
+            $table->foreignId('treatment_id');
+            $table->foreignId('appointment_id');
+            $table->string('outcome')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
             $table->softDeletes();

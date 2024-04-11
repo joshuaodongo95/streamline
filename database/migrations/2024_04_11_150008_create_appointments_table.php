@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->datetime('date');
-            $table->foreignId('patient_id');
-            $table->foreignId('clinic_id');
+            $table->foreignId('patient_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('clinic_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('status');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
